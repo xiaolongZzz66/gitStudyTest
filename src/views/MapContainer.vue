@@ -87,6 +87,9 @@ export default {
             // 信息窗体
             var content = [
               "<div><b>高德软件有限公司</b>",
+
+
+
               "电话 : 010-84107000   邮编 : 100102",
 
               "地址 : 北京市望京阜通东大街方恒国际中心A座16层</div></div>",
@@ -102,11 +105,9 @@ export default {
           // 折线的节点坐标数组，每个元素为 AMap.LngLat 对象
           var path = [
 
-            new AMap.LngLat(116.368904, 39.913423),
             new AMap.LngLat(116.382122, 39.901176),
 
             new AMap.LngLat(106.387271, 29.912501),
-            new AMap.LngLat(216.387271, 99.912501),
 
 
             new AMap.LngLat(116.387271, 39.912501),
@@ -118,6 +119,7 @@ export default {
             path: path,
             borderWeight: 9, // 线条宽度，默认为 1
             strokeColor: "red", // 线条颜色
+            
             lineJoin: "round", // 折线拐点连接处样式
           });
           // 将折线添加至地图实例
