@@ -75,9 +75,17 @@ export default {
           // 创建折线实例
           // 折线的节点坐标数组，每个元素为 AMap.LngLat 对象
           var path = [
+
             new AMap.LngLat(116.368904, 39.913423),
             new AMap.LngLat(116.382122, 39.901176),
+
+            new AMap.LngLat(106.387271, 29.912501),
+            new AMap.LngLat(216.387271, 99.912501),
+
+
             new AMap.LngLat(116.387271, 39.912501),
+
+
             new AMap.LngLat(116.398258, 39.9046),
           ];
           var polyline = new AMap.Polyline({
@@ -97,8 +105,11 @@ export default {
             };
             // 实例化AutoComplete
             var autoComplete = new AMap.AutoComplete(autoOptions);
+
             // 根据关键字进行搜索
             autoComplete.search(keyword, function (status, result) {
+              console.log(status);
+
               // 搜索成功时，result即是对应的匹配数据
               console.log(result);
             });
@@ -108,12 +119,18 @@ export default {
           console.log(e);
         });
     },
+    
     // 测试冲突1，都有改动
     test() {},
-    addMarker() {},
+    addMarker() {
+
+    },
+
     // 测试冲突2,都有改动
     test2() {},
-    // 测试冲突3,只有本账户有新增，另一个账户没有新增
+
+    // 测试冲突3,只有本账户有新增，
+    // 另一个账户没有新增
     test3() {},
   },
   mounted() {
