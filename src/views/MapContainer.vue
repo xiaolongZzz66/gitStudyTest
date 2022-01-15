@@ -16,9 +16,7 @@ import { shallowRef } from "@vue/reactivity";
 export default {
   name: "mapcomtaint",
   setup() {
-
     const map = shallowRef(null);
-
     return {
       map,
     };
@@ -27,11 +25,9 @@ export default {
   methods: {
     ininMap() {
       AMapLoader.load({
-
         key: "bb22c2b1e7a58db6707669a57c1c2b62", //设置您的key
         version: "2.0",
         plugins: ["AMap.ToolBar", "AMap.Driving", "'AMap.Driving'"],//插件加载
-
         AMapUI: {
           // 高德ui
           version: "1.1",
@@ -64,10 +60,8 @@ export default {
             let marker = new AMap.Marker({
               position: [item[0], item[1]],
             });
-
             this.map.add(marker);
           } 
-
 
 
           // 路线规划
@@ -132,19 +126,9 @@ export default {
             // 实例化AutoComplete
             var autoComplete = new AMap.AutoComplete(autoOptions);
 
-
-
-
-
-
-
             // 根据关键字进行搜索
             autoComplete.search(keyword, function (status, result) {
               console.log(status);
-
-
-
-
               // 搜索成功时，result即是对应的匹配数据
               console.log(result);
             });
