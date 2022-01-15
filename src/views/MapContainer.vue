@@ -27,7 +27,7 @@ export default {
       AMapLoader.load({
         key: "bb22c2b1e7a58db6707669a57c1c2b62", //设置您的key
         version: "2.0",
-        plugins: ["AMap.ToolBar", "AMap.Driving"],
+        plugins: ["AMap.ToolBar", "AMap.Driving", "'AMap.Driving'"],
         AMapUI: {
           version: "1.1",
           plugins: [],
@@ -60,6 +60,18 @@ export default {
             this.map.add(marker);
           }
 
+          // 路线规划
+          var driving = new AMap.Driving({
+            // 驾车路线规划策略，AMap.DrivingPolicy.LEAST_TIME是最快捷模式
+            policy: AMap.DrivingPolicy.LEAST_TIME,
+          });
+          var startLngLat = [116.379028, 39.865042];
+          var endLngLat = [116.427281, 39.903719];
+          driving.search(startLngLat, endLngLat, function (status, result) {
+            // 未出错时，result即是对应的路线规划方案
+            console.log("search--------------------", status, result);
+          });
+
           // 创建折线实例
           // 折线的节点坐标数组，每个元素为 AMap.LngLat 对象
           var path = [
@@ -76,24 +88,33 @@ export default {
           });
           // 将折线添加至地图实例
           this.map.add(polyline);
+
+          // 信息窗体
+          var content = [
+            "<div><b>高德软件有限公司</b>",
+            "电话 : 010-84107000   邮编 : 100102",
+            "地址 : 北京市望京阜通东大街方恒国际中心A座16层</div></div>",
+          ];
+          // 创建 infoWindow 实例
+          var infoWindow = new AMap.InfoWindow({
+            content: content.join("<br>"), //传入 dom 对象，或者 html 字符串
+          });
+          // 打开信息窗体
+          infoWindow.open(this.map);
+
+
         })
         .catch((e) => {
           console.log(e);
         });
     },
     // 测试冲突1，都有改动
-    test(){
-
-    },
+    test() {},
     addMarker() {},
     // 测试冲突2,都有改动
-    test2(){
-
-    },
+    test2() {},
     // 测试冲突3,只有本账户有新增，另一个账户没有新增
-    test3(){
-         
-    },
+    test3() {},
   },
   mounted() {
     //DOM初始化完成进行地图初始化
