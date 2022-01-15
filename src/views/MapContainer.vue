@@ -114,8 +114,20 @@ export default {
           // 将折线添加至地图实例
           this.map.add(polyline);
 
-
-
+          //poi输入提示
+          AMap.plugin("AMap.AutoComplete", function () {
+            var autoOptions = {
+              //city 限定城市，默认全国
+              city: "全国",
+            };
+            // 实例化AutoComplete
+            var autoComplete = new AMap.AutoComplete(autoOptions);
+            // 根据关键字进行搜索
+            autoComplete.search(keyword, function (status, result) {
+              // 搜索成功时，result即是对应的匹配数据
+              console.log(result);
+            });
+          });
         })
         .catch((e) => {
           console.log(e);
