@@ -58,7 +58,7 @@ export default {
               position: [item[0], item[1]],
             });
             this.map.add(marker);
-          }
+          } 
 
           // 路线规划
           var driving = new AMap.Driving({
@@ -119,7 +119,7 @@ export default {
           console.log(e);
         });
     },
-    
+
     // 测试冲突1，都有改动
     test() {},
     addMarker() {
