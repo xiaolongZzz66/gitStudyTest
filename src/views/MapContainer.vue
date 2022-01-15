@@ -27,7 +27,7 @@ export default {
       AMapLoader.load({
         key: "bb22c2b1e7a58db6707669a57c1c2b62", //设置您的key
         version: "2.0",
-        plugins: ["AMap.ToolBar", "AMap.Driving"],
+        plugins: ["AMap.ToolBar", "AMap.Driving", "'AMap.Driving'"],
         AMapUI: {
           version: "1.1",
           plugins: [],
@@ -60,15 +60,16 @@ export default {
             this.map.add(marker);
           }
 
-          // 卫星图层
-          var layer = new AMap.createDefaultLayer({
-            zooms: [3, 20], //可见级别
-            visible: true, //是否可见
-            opacity: 1, //透明度
-            zIndex: 0, //叠加层级
+          // 路线规划
+          var driving = new AMap.Driving({
+            // 驾车路线规划策略，AMap.DrivingPolicy.LEAST_TIME是最快捷模式
+            policy: AMap.DrivingPolicy.LEAST_TIME,
           });
-          var map = new AMap.Map("container", {
-            layers: [layer], //当只想显示标准图层时layers属性可缺省
+          var startLngLat = [116.379028, 39.865042];
+          var endLngLat = [116.427281, 39.903719];
+          driving.search(startLngLat, endLngLat, function (status, result) {
+            // 未出错时，result即是对应的路线规划方案
+            console.log("search--------------------", status, result);
           });
 
           // 创建折线实例
