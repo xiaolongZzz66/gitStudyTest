@@ -23,7 +23,6 @@ export default {
 
     },
     create(){
-
     },
     methods:{
         ininMap(){
