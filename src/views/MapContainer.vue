@@ -16,7 +16,9 @@ import { shallowRef } from "@vue/reactivity";
 export default {
   name: "mapcomtaint",
   setup() {
+
     const map = shallowRef(null);
+
     return {
       map,
     };
@@ -25,10 +27,13 @@ export default {
   methods: {
     ininMap() {
       AMapLoader.load({
+
         key: "bb22c2b1e7a58db6707669a57c1c2b62", //设置您的key
         version: "2.0",
-        plugins: ["AMap.ToolBar", "AMap.Driving", "'AMap.Driving'"],
+        plugins: ["AMap.ToolBar", "AMap.Driving", "'AMap.Driving'"],//插件加载
+
         AMapUI: {
+          // 高德ui
           version: "1.1",
           plugins: [],
         },
@@ -53,24 +58,48 @@ export default {
             [114.555528, 37.727903],
             [112.106257, 36.962733],
           ];
+
           for (let item of positionArr) {
+
             let marker = new AMap.Marker({
               position: [item[0], item[1]],
             });
+
             this.map.add(marker);
+<<<<<<< HEAD
           } 
+=======
+
+          }
+>>>>>>> 52d82ecfb5fd7b2fcb3eaa9faaacee5a2de7ed21
 
           // 路线规划
           var driving = new AMap.Driving({
             // 驾车路线规划策略，AMap.DrivingPolicy.LEAST_TIME是最快捷模式
             policy: AMap.DrivingPolicy.LEAST_TIME,
+            
           });
           var startLngLat = [116.379028, 39.865042];
           var endLngLat = [116.427281, 39.903719];
+
           driving.search(startLngLat, endLngLat, function (status, result) {
             // 未出错时，result即是对应的路线规划方案
             console.log("search--------------------", status, result);
           });
+
+            // 信息窗体
+            var content = [
+              "<div><b>高德软件有限公司</b>",
+              "电话 : 010-84107000   邮编 : 100102",
+
+              "地址 : 北京市望京阜通东大街方恒国际中心A座16层</div></div>",
+            ];
+            // 创建 infoWindow 实例
+            var infoWindow = new AMap.InfoWindow({
+              content: content.join("<br>"), //传入 dom 对象，或者 html 字符串
+            });
+            // 打开信息窗体
+            infoWindow.open(this.map);
 
           // 创建折线实例
           // 折线的节点坐标数组，每个元素为 AMap.LngLat 对象
@@ -121,12 +150,20 @@ export default {
     },
 
     // 测试冲突1，都有改动
+<<<<<<< HEAD
     test() {},
     addMarker() {
 
     },
 
+=======
+    test() {
+
+    },
+    addMarker() {},
+>>>>>>> 52d82ecfb5fd7b2fcb3eaa9faaacee5a2de7ed21
     // 测试冲突2,都有改动
+
     test2() {},
 
     // 测试冲突3,只有本账户有新增，
@@ -143,23 +180,27 @@ export default {
 .home_div {
   height: 100%;
   width: 100%;
+
   padding: 0px;
   margin: 0px;
   position: relative;
 }
 #container {
-  height: 100%;
   width: 100%;
+  height: 100%;
   padding: 0px;
   margin: 0px;
 }
 .map-title {
   position: absolute;
+
+  height: 50px;
   z-index: 1;
   width: 100%;
-  height: 50px;
+
   background-color: rgba(27, 25, 27, 0.884);
 }
+
 h3 {
   position: absolute;
   left: 10px;
