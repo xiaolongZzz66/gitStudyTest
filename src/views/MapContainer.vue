@@ -82,12 +82,12 @@ export default {
         });
     },
     // 测试冲突1，都有改动
-    test(){
+    test4(){
 
     },
     addMarker() {},
     // 测试冲突2,都有改动
-    test2(){
+    test5(){
 
     },
   },
