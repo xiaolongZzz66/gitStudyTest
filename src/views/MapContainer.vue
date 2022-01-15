@@ -66,12 +66,8 @@ export default {
             });
 
             this.map.add(marker);
-<<<<<<< HEAD
-          } 
-=======
 
           }
->>>>>>> 52d82ecfb5fd7b2fcb3eaa9faaacee5a2de7ed21
 
           // 路线规划
           var driving = new AMap.Driving({
@@ -150,18 +146,10 @@ export default {
     },
 
     // 测试冲突1，都有改动
-<<<<<<< HEAD
-    test() {},
-    addMarker() {
-
-    },
-
-=======
     test() {
 
     },
     addMarker() {},
->>>>>>> 52d82ecfb5fd7b2fcb3eaa9faaacee5a2de7ed21
     // 测试冲突2,都有改动
 
     test2() {},
