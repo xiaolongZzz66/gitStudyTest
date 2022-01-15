@@ -42,6 +42,8 @@ export default {
             }).then((AMap)=>{
                 this.map = new AMap.Map("container",{
                     viewMode:"3D",
+                    terrain: true,//地形图开启
+                    pitch:55, // 地图俯仰角度，有效范围 0 度- 83 度
                     zoom:5,
                     zooms:[2,22],
                     center:[105.602725,37.076636],
