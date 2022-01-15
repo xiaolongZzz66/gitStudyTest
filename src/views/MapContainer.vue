@@ -60,6 +60,17 @@ export default {
             this.map.add(marker);
           }
 
+          // 卫星图层
+          var layer = new AMap.createDefaultLayer({
+            zooms: [3, 20], //可见级别
+            visible: true, //是否可见
+            opacity: 1, //透明度
+            zIndex: 0, //叠加层级
+          });
+          var map = new AMap.Map("container", {
+            layers: [layer], //当只想显示标准图层时layers属性可缺省
+          });
+
           // 创建折线实例
           // 折线的节点坐标数组，每个元素为 AMap.LngLat 对象
           var path = [
@@ -76,24 +87,33 @@ export default {
           });
           // 将折线添加至地图实例
           this.map.add(polyline);
+
+          //poi输入提示
+          AMap.plugin("AMap.AutoComplete", function () {
+            var autoOptions = {
+              //city 限定城市，默认全国
+              city: "全国",
+            };
+            // 实例化AutoComplete
+            var autoComplete = new AMap.AutoComplete(autoOptions);
+            // 根据关键字进行搜索
+            autoComplete.search(keyword, function (status, result) {
+              // 搜索成功时，result即是对应的匹配数据
+              console.log(result);
+            });
+          });
         })
         .catch((e) => {
           console.log(e);
         });
     },
     // 测试冲突1，都有改动
-    test(){
-
-    },
+    test() {},
     addMarker() {},
     // 测试冲突2,都有改动
-    test2(){
-
-    },
+    test2() {},
     // 测试冲突3,只有本账户有新增，另一个账户没有新增
-    test3(){
-         
-    },
+    test3() {},
   },
   mounted() {
     //DOM初始化完成进行地图初始化
