@@ -81,7 +81,15 @@ export default {
           console.log(e);
         });
     },
-    addMarker() {},
+    // 测试冲突1，都有改动
+    test(){
+
+    },
+    addMarker() {},
+    // 测试冲突2,都有改动
+    test2(){
+
+    },
   },
   mounted() {
     //DOM初始化完成进行地图初始化
