@@ -132,9 +132,18 @@ export default {
             // 实例化AutoComplete
             var autoComplete = new AMap.AutoComplete(autoOptions);
 
+
+
+
+
+
+
             // 根据关键字进行搜索
             autoComplete.search(keyword, function (status, result) {
               console.log(status);
+
+
+
 
               // 搜索成功时，result即是对应的匹配数据
               console.log(result);
