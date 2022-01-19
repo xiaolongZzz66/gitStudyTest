@@ -1,7 +1,8 @@
 <template>
   <div class="home_div">
     <div class="map-title">
-      <h3>JSAPI Vue3地图组件示例</h3>
+      <!-- //测试只有分支有test2会不会冲突 -->
+      <h3 class="test1 test2">JSAPI Vue3地图组件示例</h3>
     </div>
     <div id="container"></div>
   </div>
@@ -51,7 +52,9 @@ export default {
           // 创建多个点标记
           let positionArr = [
             [113.357224, 34.977186],
-            [114.555528, 37.727903],
+            [114.555528, 37.727903],//主枝干和分支冲突部分test4
+            [124.555528, 67.727903],//分支新增test3
+            [154.555528, 97.727903],
             [112.106257, 36.962733],
           ];
 
@@ -74,6 +77,7 @@ export default {
           var endLngLat = [116.427281, 39.903719];
 
           driving.search(startLngLat, endLngLat, function (status, result) {
+
             // 未出错时，result即是对应的路线规划方案
             console.log("search--------------------", status, result);
           });
@@ -81,9 +85,7 @@ export default {
             // 信息窗体
             var content = [
               "<div><b>高德软件有限公司</b>",
-
-
-
+              "<div><b>恒实有限公司</b>",
               "电话 : 010-84107000   邮编 : 100102",
 
               "地址 : 北京市望京阜通东大街方恒国际中心A座16层</div></div>",
@@ -184,6 +186,10 @@ export default {
   width: 100%;
 
   background-color: rgba(27, 25, 27, 0.884);
+}
+
+.test1{
+  /* //测试只有主分支有这个类，看看合并分支的时候会冲突吗 */
 }
 
 h3 {
